@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nossa História ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+text-align:center;
+color:white;
+overflow-x:hidden;
+}
+
+h1{
+margin-top:40px;
+font-size:42px;
+}
+
+#contador{
+font-size:24px;
+margin:20px;
+font-weight:bold;
+}
+
+button{
+padding:15px 25px;
+font-size:18px;
+border:none;
+border-radius:12px;
+background:white;
+color:#ff4b6e;
+cursor:pointer;
+}
+
+.carta{
+display:none;
+margin:30px auto;
+width:80%;
+max-width:500px;
+background:white;
+color:#ff4b6e;
+padding:20px;
+border-radius:15px;
+}
+
+.fotos{
+margin-top:30px;
+}
+
+.fotos img{
+width:200px;
+margin:10px;
+border-radius:15px;
+box-shadow:0 0 10px black;
+}
+
+.coracao{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:cair linear infinite;
+}
+
+@keyframes cair{
+0%{transform:translateY(-10px);}
+100%{transform:translateY(100vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>❤️ Nossa História ❤️</h1>
+
+<div id="contador"></div>
+
+<button onclick="abrirCarta()">Abrir minha cartinha 💌</button>
+
+<div class="carta" id="carta">
+<p>
+
+Desde que você entrou na minha vida tudo ficou mais bonito.  
+Você é a melhor coisa que já aconteceu comigo.
+
+Obrigado por cada momento, cada risada e cada abraço.
+
+Eu te amo muito ❤️
+
+</p>
+</div>
+
+<div class="fotos">
+
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+
+</div>
+
+<audio autoplay loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function atualizarContador(){
+
+var inicio = new Date("2024-05-19");
+var agora = new Date();
+
+var anos = agora.getFullYear() - inicio.getFullYear();
+var meses = agora.getMonth() - inicio.getMonth();
+var dias = agora.getDate() - inicio.getDate();
+
+if(dias < 0){
+meses--;
+dias += 30;
+}
+
+if(meses < 0){
+anos--;
+meses += 12;
+}
+
+document.getElementById("contador").innerHTML =
+"❤️ Estamos juntos há " + anos + " anos, " + meses + " meses e " + dias + " dias";
+
+}
+
+setInterval(atualizarContador,1000);
+
+atualizarContador();
+
+function abrirCarta(){
+document.getElementById("carta").style.display="block";
+}
+
+function criarCoracao(){
+
+var coracao=document.createElement("div");
+
+coracao.classList.add("coracao");
+
+coracao.innerHTML="❤️";
+
+coracao.style.left=Math.random()*100+"vw";
+
+coracao.style.animationDuration=(Math.random()*3+2)+"s";
+
+document.body.appendChild(coracao);
+
+setTimeout(()=>{
+coracao.remove();
+},5000);
+
+}
+
+setInterval(criarCoracao,300);
+
+</script>
+
+</body>
+</html>
